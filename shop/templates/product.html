@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="product-detail">
+        <h2 class="title">{{ product.name }}</h2>
+        <img src="{{ url_for('static', filename='images/products/' + product.image_file) }}" alt="{{ product.name }}" class="product-image">
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">Price: £{{ product.price }}</p>
+        <p class="product-impact">Environmental Impact (kg of CO2 emitted per unit): {{ product.carbon_footprint }} </p>
+        <form method="post" action="{{ url_for('main.add_to_cart', product_id=product.id) }}" class="add-to-cart-form">
+            {{ form.csrf_token }}
+            <input type="hidden" name="quantity" value="1">
+            <input type="submit" value="Add to Cart" class="btn btn-add-cart">
+        </form>
+        <a href="{{ url_for('main.home') }}" class="btn btn-back">Back to Products</a>
+    </div>
+{% endblock %}

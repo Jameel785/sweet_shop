@@ -10,10 +10,16 @@ main = Blueprint('main', __name__)
 @main.route("/")
 @main.route("/home")
 def home():
-    products = Product.query.all()
+    sort_by = request.args.get('sort_by', 'name')  # Default sorting by name
+    if sort_by == 'price':
+        products = Product.query.order_by(Product.price).all()
+    elif sort_by == 'environment':
+        products = Product.query.order_by(Product.carbon_footprint).all()
+    else:  # Default and 'name' case
+        products = Product.query.order_by(Product.name).all()
+
     form = AddToCartForm()
     return render_template('home.html', products=products, form=form)
-
 
 @main.route("/register", methods=['GET', 'POST'])
 def register():

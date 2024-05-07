@@ -84,6 +84,14 @@ body {
     color: black;
 }
 
+.nav select {
+    padding: 8px 16px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+}
+
 .form-group {
     margin-bottom: 15px;
 }
@@ -124,11 +132,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;  /* Creates consistent spacing between product cards */
+    gap: 20px;
 }
 
 .product-card {
-    width: calc(33.333% - 20px);  /* Three products per row with gap factored in */
+    width: calc(33.333% - 20px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 15px;
     border-radius: 8px;

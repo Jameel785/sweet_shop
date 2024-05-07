@@ -16,6 +16,13 @@
             <a href="{{ url_for('main.login') }}">Login</a>
             <a href="{{ url_for('main.register') }}">Register</a>
         {% endif %}
+        <!-- Sorting Dropdown -->
+        <select onchange="location = this.value;">
+            <option value="{{ url_for('main.home') }}">Sort By</option>
+            <option value="{{ url_for('main.home', sort_by='name') }}">Name</option>
+            <option value="{{ url_for('main.home', sort_by='price') }}">Price</option>
+            <option value="{{ url_for('main.home', sort_by='environment') }}">Environmental Impact</option>
+        </select>
     </div>
     <div class="container" style="padding-top: 60px;"> <!-- Add padding to top of container to avoid overlap with the nav bar -->
         {% with messages = get_flashed_messages(with_categories=true) %}
